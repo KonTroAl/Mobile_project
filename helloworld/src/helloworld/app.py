@@ -5,6 +5,12 @@ import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
 
+# фунцкия проверки наличия имени в окне ввода
+def greeting(name):
+    if name:
+        return f'Hello, {name}'
+    else:
+        return 'Hello, stranger'
 
 class HelloWorld(toga.App):
 
@@ -47,8 +53,8 @@ class HelloWorld(toga.App):
     # функция вывода сообщения в диалоговом окне
     def say_hello(self, widget):
         self.main_window.info_dialog(
-            f'Hello, {self.name_input.value}',
-            'Hi there!'
+            greeting(self.name_input.value),
+            'Hi there!',
         )
 
 def main():
