@@ -8,6 +8,7 @@ from toga.style.pack import COLUMN, ROW
 
 class HelloWorld(toga.App):
 
+    # функция моделирования приложения
     def startup(self):
         """
         Construct and show the Toga application.
@@ -16,6 +17,7 @@ class HelloWorld(toga.App):
         We then create a main window (with a name matching the app), and
         show the main window.
         """
+
         main_box = toga.Box(style=Pack(direction=COLUMN))
 
         name_lable = toga.Label(
@@ -42,8 +44,12 @@ class HelloWorld(toga.App):
         self.main_window.content = main_box
         self.main_window.show()
 
+    # функция вывода сообщения в диалоговом окне
     def say_hello(self, widget):
-        print('Hello,', self.name_input.value)
+        self.main_window.info_dialog(
+            f'Hello, {self.name_input.value}',
+            'Hi there!'
+        )
 
 def main():
     return HelloWorld()
